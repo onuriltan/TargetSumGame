@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Number extends React.Component {
+class Number extends Component {
     render() {
       return <div className="number">{this.props.value}</div>;
     }
