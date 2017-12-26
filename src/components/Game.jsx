@@ -35,12 +35,16 @@ class Game extends Component {
           Pick numbers that sum to the target in {this.state.initialSeconds} seconds
         </div>
         <div className="target">{this.state.randomTargetNumber}</div>
+          <div className="challenge-numbers">
            <Number value={13} />
            <Number value={21} />
            <Number value={15} />
+          </div>
+          <div className="challenge-numbers">
            <Number value={45} />
            <Number value={13} />
            <Number value={43} />
+          </div>
         <div className="footer">
           <div className="timer-value">{this.state.initialSeconds}</div>
           <button>Start</button>
