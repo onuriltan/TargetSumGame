@@ -7,7 +7,7 @@ class App extends Component {
     <Game 
     challengesize={6} 
     initialChallengeRange={[30, 50]} 
-    initialSeconds={10}
+    initialSeconds={60}
     />
     );
   }

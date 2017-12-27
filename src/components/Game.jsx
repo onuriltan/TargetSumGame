@@ -6,7 +6,6 @@ import Number from '../components/Number';
 
 class Game extends Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,38 +15,14 @@ class Game extends Component {
       numbers: [0, 0, 0, 0, 0, 0],
       targetNumber: 0,
       timesToReachTarget: 0,
+      timesOfPlay: 0,
+      gameState: 'NOT_STARTED'
+
     };
     this.randomNumberBetween = this.randomNumberBetween.bind(this);
-    this.startGame = this.startGame.bind(this);
+    this.startNewGame = this.startNewGame.bind(this);
+    this.resetGame = this.resetGame.bind(this);
 
-  }
-  randomNumberBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-  startGame(){
-    this.setState({ numbers : [] });
-    let targetNumber = _.random(this.state.initialChallengeRange[0], this.state.initialChallengeRange[1]);
-    this.setState({ targetNumber: targetNumber });
-    let timesToReachTarget = _.random(2, 5);
-    this.setState({ timesToReachTarget: timesToReachTarget });
-
-    let tempTargetNumber = targetNumber;
-    let generalSum = 0;
-    let tempNumbers = [];
-    for (let i = 0; i < timesToReachTarget-1; i++) {
-      let number = _.random(1, tempTargetNumber);
-      generalSum += number;
-      tempNumbers.push(number);
-      tempTargetNumber = targetNumber - number;
-    }
-    let lastNumber = targetNumber - generalSum;
-    generalSum += lastNumber;
-    tempNumbers.push(lastNumber);
-
-    for (let j = 0; j < 6 - timesToReachTarget; j++) {
-      let number = _.random(1, tempTargetNumber);
-      tempNumbers.push(number);
-    }
-    this.setState({ numbers : tempNumbers})
   }
 
 
@@ -70,11 +45,57 @@ class Game extends Component {
         </div>
         <div className="footer">
           <div className="timer-value">{this.state.initialSeconds}</div>
-          <button onClick={this.startGame}>Start</button>
+          <button onClick={this.startNewGame}>Start</button>
+          <button onClick={this.resetGame}>Reset</button>
+
         </div>
       </div>
     );
   }
+
+  randomNumberBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+  startNewGame() {
+    this.setState({ gameState: 'STARTED' });
+    this.setState({ numbers: [] });
+    let targetNumber = _.random(this.state.initialChallengeRange[0], this.state.initialChallengeRange[1]);
+    this.setState({ targetNumber: targetNumber });
+    let timesToReachTarget = _.random(2, 5);
+    this.setState({ timesToReachTarget: timesToReachTarget });
+
+    let tempTargetNumber = targetNumber;
+    let generalSum = 0;
+    let tempNumbers = [];
+    for (let i = 0; i < timesToReachTarget - 1; i++) {
+      let number = _.random(1, tempTargetNumber);
+      generalSum += number;
+      tempNumbers.push(number);
+      tempTargetNumber = targetNumber - number;
+    }
+    let lastNumber = targetNumber - generalSum;
+    generalSum += lastNumber;
+    tempNumbers.push(lastNumber);
+
+    for (let j = 0; j < 6 - timesToReachTarget; j++) {
+      let number = _.random(1, tempTargetNumber);
+      tempNumbers.push(number);
+    }
+    this.setState({ numbers: tempNumbers })
+  }
+
+  resetGame() {
+    this.setState({
+      challengeSize: this.props.challengeSize,
+      initialChallengeRange: this.props.initialChallengeRange,
+      initialSeconds: this.props.initialSeconds,
+      numbers: [0, 0, 0, 0, 0, 0],
+      targetNumber: 0,
+      timesToReachTarget: 0,
+      timesOfPlay: 0,
+      gameState: 'NOT_STARTED'
+    });
+  }
+
 }
 
 
