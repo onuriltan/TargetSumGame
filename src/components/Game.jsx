@@ -23,7 +23,6 @@ class Game extends Component {
     this.randomNumberBetween = this.randomNumberBetween.bind(this);
     this.startNewGame = this.startNewGame.bind(this);
     this.resetGame = this.resetGame.bind(this);
-    this.numberAction = this.numberAction.bind(this);
 
   }
 
@@ -36,14 +35,14 @@ class Game extends Component {
         </div>
         <div className="target">{this.state.targetNumber}</div>
         <div className="challenge-numbers">
-          <Number onClick= {this.numberAction(this.state.numbers[0])} value={this.state.numbers[0]} />
-          <Number onClick= {this.numberAction(this.state.numbers[1])} value={this.state.numbers[1]} />
-          <Number onClick= {this.numberAction(this.state.numbers[2])} value={this.state.numbers[2]} />
+          <Number value={this.state.numbers[0]} />
+          <Number value={this.state.numbers[1]} />
+          <Number value={this.state.numbers[2]} />
         </div>
         <div className="challenge-numbers">
-          <Number onClick= {this.numberAction(this.state.numbers[3])} value={this.state.numbers[3]} />
-          <Number onClick= {this.numberAction(this.state.numbers[4])} value={this.state.numbers[4]} />
-          <Number onClick= {this.numberAction(this.state.numbers[5])} value={this.state.numbers[5]} />
+          <Number value={this.state.numbers[3]} />
+          <Number value={this.state.numbers[4]} />
+          <Number value={this.state.numbers[5]} />
         </div>
         <div className="footer">
           <div className="timer-value">{this.state.initialSeconds}</div>
@@ -99,9 +98,6 @@ class Game extends Component {
     });
   }
 
-  numberAction(number) {
-    console.log(number);
-  }
 
 }
 
