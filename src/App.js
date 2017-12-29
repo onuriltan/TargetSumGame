@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import configureStore from './store/configureStore';
 import Game from '../src/components/Game';
 
 class App extends Component {
