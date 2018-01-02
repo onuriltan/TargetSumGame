@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as gameActions from '../actions/gameActions';
+import PropTypes from 'prop-types';
 import '../components/Game.css';
 import _ from 'lodash';
 
