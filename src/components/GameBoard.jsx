@@ -23,8 +23,8 @@ class GameBoard extends Component {
         </div>
         <div className="footer">
           <div className="timer-value">{this.props.initialState.initialSeconds}</div>
-          <button onClick={this.props.startGame}>Start</button>
-          <button onClick={this.props.resetGame}>Reset</button>
+          <button onClick={() => this.props.startGame(this.props.initialState)}>Start</button>
+          <button onClick={() => this.props.resetGame(this.props.initialState)}>Reset</button>
         </div>
       </div>
     );

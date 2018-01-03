@@ -8,17 +8,15 @@ import './Game.css';
 import GameBoard from '../components/GameBoard';
 
 class Game extends Component {
-  
-  componentWillMount(){
-    console.log(this.props.state.gameReducer)
-  }
 
-  render() {
+  render() {//add resetgame to gameboard
+    console.log(this.props.state.gameReducer)
     return (
       <div className="game">
-        <GameBoard startGame={this.props.gameActions.startGame}
-                   resetGame={this.props.gameActions.resetGame}
-                   initialState={this.props.state.gameReducer}       
+        <GameBoard 
+            startGame={(state) => this.props.gameActions.startGame(state)}
+            resetGame={(state) => this.props.gameActions.resetGame(state)}
+            initialState={this.props.state.gameReducer}       
         />
       </div>
     );
@@ -32,6 +30,7 @@ Game.propTypes = {
 };
 
 function mapStateToProps(state) {
+  console.log("mapStateToProps= ",state)
   return { state: state };
 }
 
