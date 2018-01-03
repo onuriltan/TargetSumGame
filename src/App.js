@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Game from '../src/components/Game';
+
+import Game from '../src/containers/Game';
 
 class App extends Component {
   render() {
-    return(
-    <Game 
-    challengesize={6} 
-    initialChallengeRange={[30, 50]} 
-    initialSeconds={60}
-    />
+    return (
+      <div className="app">
+        <Game />
+      </div>
+
     );
   }
 }
