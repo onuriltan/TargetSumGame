@@ -9,14 +9,14 @@ import GameBoard from '../components/GameBoard';
 
 class Game extends Component {
 
-  render() {//add resetgame to gameboard
-    console.log(this.props.state.gameReducer)
+  render() {
     return (
       <div className="game">
-        <GameBoard 
-            startGame={(state) => this.props.gameActions.startGame(state)}
-            resetGame={(state) => this.props.gameActions.resetGame(state)}
-            initialState={this.props.state.gameReducer}       
+        <GameBoard
+          startGame={(state) => this.props.gameActions.startGame(state)}
+          resetGame={(state) => this.props.gameActions.resetGame(state)}
+          numberClick={(state) => this.props.gameActions.numberClick(state)}
+          initialState={this.props.state.gameReducer}
         />
       </div>
     );
@@ -30,7 +30,6 @@ Game.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log("mapStateToProps= ",state)
   return { state: state };
 }
 

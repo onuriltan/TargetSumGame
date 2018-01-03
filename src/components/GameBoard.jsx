@@ -12,14 +12,14 @@ class GameBoard extends Component {
             </div>
         <div className="target">{this.props.initialState.targetNumber}</div>
         <div className="challenge-numbers">
-          <Number value={this.props.initialState.numbers[0]} />
-          <Number value={this.props.initialState.numbers[1]} />
-          <Number value={this.props.initialState.numbers[2]} />
+          <Number numberClick={() => this.props.numberClick(this.props.initialState, this.props.initialState.numbers[0])} value={this.props.initialState.numbers[0]} />
+          <Number numberClick={() => this.props.numberClick(this.props.initialState, this.props.initialState.numbers[1])} value={this.props.initialState.numbers[1]} />
+          <Number numberClick={() => this.props.numberClick(this.props.initialState, this.props.initialState.numbers[2])} value={this.props.initialState.numbers[2]} />
         </div>
         <div className="challenge-numbers">
-          <Number value={this.props.initialState.numbers[3]} />
-          <Number value={this.props.initialState.numbers[4]} />
-          <Number value={this.props.initialState.numbers[5]} />
+          <Number numberClick={() => this.props.numberClick(this.props.initialState, this.props.initialState.numbers[3])} value={this.props.initialState.numbers[3]} />
+          <Number numberClick={() => this.props.numberClick(this.props.initialState, this.props.initialState.numbers[4])} value={this.props.initialState.numbers[4]} />
+          <Number numberClick={() => this.props.numberClick(this.props.initialState, this.props.initialState.numbers[5])} value={this.props.initialState.numbers[5]} />
         </div>
         <div className="footer">
           <div className="timer-value">{this.props.initialState.initialSeconds}</div>

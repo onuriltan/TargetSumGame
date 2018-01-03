@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 class Number extends Component {
-    render() {
-      return <div className="number">{this.props.value}</div>;
-    }
+
+  render() {
+    return <button
+      className="number"
+      onClick={() => this.props.numberClick(this.props.initialState, this.props.value)}>
+      {this.props.value}
+    </button>;
+  }
 
 }
 export default Number;

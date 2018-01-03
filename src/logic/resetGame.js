@@ -15,6 +15,4 @@ export default function resetGame(initialState) {
 
     return newState;
 
-
-
 }
