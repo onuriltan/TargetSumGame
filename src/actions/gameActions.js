@@ -1,9 +1,5 @@
 import * as types from './actionTypes';
 
-import ResetGame from '../logic/resetGame';
-import NumberClick from '../logic/numberClick';
-
-
 export function startGame(state) {
     return {
         type: types.START_BUTTON_CLICKED,
@@ -14,15 +10,15 @@ export function startGame(state) {
 export function resetGame(state) {
     return {
         type: types.RESET_BUTTON_CLICKED,
-        payload: ResetGame(state)
+        payload: state
     };
 
 }
 
-export function numberClick(state, number) {
+export function numberClick(state) {
     return { 
         type: types.NUMBER_BUTTON_CLICKED, 
-        payload: NumberClick(state, number) 
+        payload: state
     };
 
 }

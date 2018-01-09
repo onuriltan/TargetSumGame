@@ -40,9 +40,10 @@ export default function game(state = initialState, action) {
             return {...state, newState};
 
         case START_COUNTDOWN:
+            console.log("START_COUNTDOWN STARTED.")
             newState = action.payload;
             return {...state, newState};
-            
+
         default:
             return state;
     }

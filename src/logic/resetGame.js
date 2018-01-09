@@ -1,6 +1,4 @@
-
-export default function resetGame(initialState) {
-
+export default function resetGame(initialStatae){
     let newState = initialState;
 
     newState.startButtonDisabled = false;
@@ -16,6 +14,7 @@ export default function resetGame(initialState) {
     newState.timesOfPlay = 0;
     newState.gameState = 'NOT_STARTED';
     newState.sumToReachTarget = 0;
+    this.stopCountDown();
 
     return newState;
 
