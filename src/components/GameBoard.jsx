@@ -89,7 +89,6 @@ class GameBoard extends Component {
         this.resetGame() ;  
      }
     console.log(newState.sumToReachTarget);
-    this.stopCountDown();
     return newState;
   }
 
