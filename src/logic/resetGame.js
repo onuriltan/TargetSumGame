@@ -1,7 +1,9 @@
-
-export default function resetGame(initialState) {
-
+export default function resetGame(initialStatae){
     let newState = initialState;
+
+    newState.startButtonDisabled = false;
+    newState.numberButtonDisabled = true;
+    newState.resetButtonDisabled = true
 
     newState.challengeSize = 6;
     newState.initialChallengeRange = [30, 50];
@@ -12,9 +14,8 @@ export default function resetGame(initialState) {
     newState.timesOfPlay = 0;
     newState.gameState = 'NOT_STARTED';
     newState.sumToReachTarget = 0;
+    this.stopCountDown();
 
     return newState;
-
-
 
 }

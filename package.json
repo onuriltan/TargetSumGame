@@ -10,7 +10,8 @@
     "redux": "3.7.2",
     "react-redux": "5.0.6",
     "redux-thunk": "2.2.0",
-    "immutability-helper": "2.6.2"
+    "immutability-helper": "2.6.2",
+    "react-onclickoutside": "6.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
