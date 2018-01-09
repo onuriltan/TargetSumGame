@@ -3,6 +3,10 @@ export default function resetGame(initialState) {
 
     let newState = initialState;
 
+    newState.startButtonDisabled = false;
+    newState.numberButtonDisabled = true;
+    newState.resetButtonDisabled = true
+
     newState.challengeSize = 6;
     newState.initialChallengeRange = [30, 50];
     newState.initialSeconds = 60;

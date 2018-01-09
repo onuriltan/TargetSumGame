@@ -1,13 +1,13 @@
 import * as types from './actionTypes';
 
-import StartGame from '../logic/startGame';
 import ResetGame from '../logic/resetGame';
 import NumberClick from '../logic/numberClick';
+
 
 export function startGame(state) {
     return {
         type: types.START_BUTTON_CLICKED,
-        payload: StartGame(state)
+        payload: state
     };
 }
 
@@ -26,3 +26,11 @@ export function numberClick(state, number) {
     };
 
 }
+
+export function startCountDown(state) {
+    return {
+        type: types.START_COUNTDOWN,
+        payload: state
+    }
+}
+

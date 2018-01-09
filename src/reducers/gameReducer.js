@@ -1,7 +1,8 @@
 import {
     NUMBER_BUTTON_CLICKED,
     START_BUTTON_CLICKED,
-    RESET_BUTTON_CLICKED
+    RESET_BUTTON_CLICKED,
+    START_COUNTDOWN
 } from '../actions/actionTypes';
 
 let initialState = {
@@ -14,6 +15,9 @@ let initialState = {
     timesOfPlay: 0,
     gameState: 'NOT_STARTED',
     sumToReachTarget: 0,
+    startButtonDisabled: false,
+    numberButtonDisabled: true,
+    resetButtonDisabled: true
 }
 
 
@@ -34,8 +38,13 @@ export default function game(state = initialState, action) {
             console.log("NUMBER BUTTON CLICKED.")
             newState = action.payload;
             return {...state, newState};
+
+        case START_COUNTDOWN:
+            newState = action.payload;
+            return {...state, newState};
             
         default:
             return state;
     }
+
 }
