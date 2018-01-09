@@ -3,7 +3,7 @@
   align-items: center; width: 100%;
 }
 .help {
-  margin: 1rem 5%;
+  margin: 5rem 5%; display: flex; width: 90%; justify-content: space-between; 
 }
 .target {
   border: thin solid #999; width: 40%; height: 75px;

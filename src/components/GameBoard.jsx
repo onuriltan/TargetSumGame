@@ -22,8 +22,9 @@ class GameBoard extends Component {
     return (
       <div className="game">
         <div className="help">
+          <div className="timer-value">Win Count: {this.props.state.gameReducer.timesOfPlay}</div>
           Pick numbers that sum to the target in {this.props.state.gameReducer.initialSeconds} seconds
-            </div>
+        </div>
         <div className="target">{this.props.state.gameReducer.targetNumber}</div>
         <div className="challenge-numbers">
           <button
@@ -46,6 +47,7 @@ class GameBoard extends Component {
           </button>
 
         </div>
+
         <div className="challenge-numbers">
           <button
             disabled={this.props.state.gameReducer.numberButtonDisabled}
@@ -65,7 +67,7 @@ class GameBoard extends Component {
             onClick={() => this.numberClick(this.props.state.gameReducer.numbers[5])}>
             {this.props.state.gameReducer.numbers[5]}
           </button>
-   
+
         </div>
         <div className="footer">
           <div className="timer-value">{this.props.state.gameReducer.initialSeconds}</div>
@@ -74,6 +76,7 @@ class GameBoard extends Component {
           <button onClick={() => this.resetGame()}
             disabled={this.props.state.gameReducer.resetButtonDisabled}>Reset</button>
         </div>
+
       </div>
     );
   }
@@ -86,8 +89,8 @@ class GameBoard extends Component {
     }
 
     if (newState.targetNumber < newState.sumToReachTarget) {
-        this.resetGame() ;  
-     }
+      this.resetGame();
+    }
     console.log(newState.sumToReachTarget);
     return newState;
   }

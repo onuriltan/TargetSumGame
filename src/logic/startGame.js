@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default function startGame(initialState, sumToReachTarget){
+export default function startGame(initialState, sumToReachTarget, timesOfPlay){
         let newState;
         newState = initialState;
         newState.gameState = 'STARTED';
@@ -9,6 +9,8 @@ export default function startGame(initialState, sumToReachTarget){
         newState.resetButtonDisabled = false;
         newState.numbers = [];
         newState.sumToReachTarget = sumToReachTarget;
+        newState.timesOfPlay = timesOfPlay;
+
     
         let targetNumber = _.random(newState.initialChallengeRange[0], newState.initialChallengeRange[1]);
         newState.targetNumber = targetNumber;
