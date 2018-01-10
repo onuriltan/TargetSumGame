@@ -7,7 +7,6 @@ import _ from 'lodash';
 
 
 import StartGame from '../logic/startGame';
-import ResetGame from '../logic/startGame';
 
 
 class GameBoard extends Component {
@@ -22,7 +21,7 @@ class GameBoard extends Component {
     return (
       <div className="game">
         <div className="help">
-          <div className="timer-value">Win Count: {this.props.state.gameReducer.timesOfPlay}</div>
+          <div className="win-count">Win Count: {this.props.state.gameReducer.timesOfPlay}</div>
           Pick numbers that sum to the target in {this.props.state.gameReducer.initialSeconds} seconds
         </div>
         <div className="target">{this.props.state.gameReducer.targetNumber}</div>
@@ -84,12 +83,13 @@ class GameBoard extends Component {
   numberClick(number) {
     let newState = this.props.state.gameReducer;
     newState.sumToReachTarget += number;
+
     if (newState.targetNumber === newState.sumToReachTarget) {
       return this.props.gameActions.startGame(StartGame(newState, 0, newState.timesOfPlay + 1));
     }
 
     if (newState.targetNumber < newState.sumToReachTarget) {
-      this.resetGame();
+      this.gameOver();
     }
     console.log(newState.sumToReachTarget);
     return newState;
@@ -109,11 +109,13 @@ class GameBoard extends Component {
     let timesToReachTarget = _.random(2, 5);
     newState.timesToReachTarget = timesToReachTarget;
 
+    newState.timesOfPlay = 0;
+
     let tempTargetNumber = targetNumber;
     let generalSum = 0;
     let tempNumbers = [];
     for (let i = 0; i < timesToReachTarget - 1; i++) {
-      let number = _.random(1, tempTargetNumber);
+      let number = _.random(i+1, parseInt(tempTargetNumber/i+1));
       generalSum += number;
       tempNumbers.push(number);
       tempTargetNumber = targetNumber - number;
@@ -123,9 +125,10 @@ class GameBoard extends Component {
     tempNumbers.push(lastNumber);
 
     for (let j = 0; j < 6 - timesToReachTarget; j++) {
-      let number = _.random(1, tempTargetNumber);
+      let number = _.random(0, tempTargetNumber);
       tempNumbers.push(number);
     }
+ 
     newState.numbers = tempNumbers;
 
     this.startCountDown();
@@ -138,6 +141,9 @@ class GameBoard extends Component {
     this.interval = setInterval(() => {
       let newState = this.props.state.gameReducer;
       newState.initialSeconds = newState.initialSeconds - 1
+      if(newState.initialSeconds === 0) {
+        this.gameOver();
+      }
       return this.props.gameActions.startCountDown(newState);
     }, 1000);
   }
@@ -149,6 +155,22 @@ class GameBoard extends Component {
       newState.initialSeconds = 60;
       return this.props.gameActions.startCountDown(newState);
     }, 500);
+  }
+
+
+  gameOver(){
+    let newState = this.props.state.gameReducer;
+
+    newState.startButtonDisabled = false;
+    newState.numberButtonDisabled = true;
+    newState.resetButtonDisabled = true
+
+    newState.targetNumber = 'GAME OVER';
+
+    newState.gameState = 'LOST';
+    this.stopCountDown();
+
+    return newState;
   }
 
   resetGame() {
