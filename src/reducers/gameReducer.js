@@ -3,7 +3,7 @@ import * as TYPES from '../actions/actionTypes';
 
 let initialState = {
     challengeSize: 6,
-    initialChallengeRange: [30, 50],
+    initialChallengeRange: [20, 30],
     initialSeconds: 120,
     numbers: [0, 0, 0, 0, 0, 0],
     targetNumber: 0,
