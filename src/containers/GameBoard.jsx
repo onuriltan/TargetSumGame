@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import StartGame from '../logic/startGame';
 import ResetGame from '../logic/resetGame';
+import GameOver from '../logic/gameOver';
 
 
 class GameBoard extends Component {
@@ -79,6 +80,7 @@ class GameBoard extends Component {
     );
   }
 
+
   numberClick(number) {
     let newState = this.props.state.gameReducer;
     newState.sumToReachTarget += number;
@@ -103,26 +105,6 @@ class GameBoard extends Component {
 
   }
 
-  shuffleNumbers(numbers) {
-
-    let ctr = numbers.length;
-    let temp;
-    let index;
-
-    // While there are elements in the array
-    while (ctr > 0) {
-      // Pick a random index
-      index = Math.floor(Math.random() * ctr);
-      // Decrease ctr by 1
-      ctr--;
-      // And swap the last element with it
-      temp = numbers[ctr];
-      numbers[ctr] = numbers[index];
-      numbers[index] = temp;
-    }
-    return numbers;
-
-  }
 
   startCountDown() {
     this.interval = setInterval(() => {
@@ -146,15 +128,8 @@ class GameBoard extends Component {
 
 
   gameOver() {
-    let newState = this.props.state.gameReducer;
+    let newState = this.props.gameActions.gameOver(GameOver(this.props.state.gameReducer));
 
-    newState.startButtonDisabled = false;
-    newState.numberButtonDisabled = true;
-    newState.resetButtonDisabled = true
-
-    newState.targetNumber = 'GAME OVER';
-
-    newState.gameState = 'LOST';
     this.stopCountDown();
 
     return newState;

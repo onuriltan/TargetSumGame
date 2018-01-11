@@ -1,21 +1,20 @@
 import _ from 'lodash';
 
 export default function startGame(initialState, sumToReachTarget, timesOfPlay) {
-  let newState;
-  newState = initialState;
-  newState.gameState = 'STARTED';
-  newState.startButtonDisabled = true;
-  newState.numberButtonDisabled = false;
-  newState.resetButtonDisabled = false;
-  newState.numbers = [];
-  newState.sumToReachTarget = sumToReachTarget;
-  newState.timesOfPlay = timesOfPlay;
+  
+  initialState.gameState = 'STARTED';
+  initialState.startButtonDisabled = true;
+  initialState.numberButtonDisabled = false;
+  initialState.resetButtonDisabled = false;
+  initialState.numbers = [];
+  initialState.sumToReachTarget = sumToReachTarget;
+  initialState.timesOfPlay = timesOfPlay;
 
 
-  let targetNumber = _.random(newState.initialChallengeRange[0] * (timesOfPlay + 0, 2), newState.initialChallengeRange[1] * (timesOfPlay + 0, 2));
-  newState.targetNumber = targetNumber;
+  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay + 0, 2), initialState.initialChallengeRange[1] * (timesOfPlay + 0, 2));
+  initialState.targetNumber = targetNumber;
   let timesToReachTarget = _.random(2, 5);
-  newState.timesToReachTarget = timesToReachTarget;
+  initialState.timesToReachTarget = timesToReachTarget;
 
   let tempTargetNumber = targetNumber;
   let generalSum = 0;
@@ -34,8 +33,8 @@ export default function startGame(initialState, sumToReachTarget, timesOfPlay) {
     let number = _.random(0, tempTargetNumber);
     tempNumbers.push(number);
   }
-  newState.numbers = shuffleNumbers(tempNumbers);
-  return newState;
+  initialState.numbers = shuffleNumbers(tempNumbers);
+  return initialState;
 
 }
 
