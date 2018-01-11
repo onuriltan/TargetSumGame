@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Game.css';
 
-import GameBoard from '../components/GameBoard';
+import GameBoard from '../containers/GameBoard';
 
 class Game extends Component {
 

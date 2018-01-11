@@ -1,9 +1,5 @@
-import {
-    NUMBER_BUTTON_CLICKED,
-    START_BUTTON_CLICKED,
-    RESET_BUTTON_CLICKED,
-    START_COUNTDOWN
-} from '../actions/actionTypes';
+import * as TYPES from '../actions/actionTypes';
+
 
 let initialState = {
     challengeSize: 6,
@@ -24,19 +20,23 @@ let initialState = {
 export default function game(state = initialState, action) {
     let newState;
     switch (action.type) {
-        case START_BUTTON_CLICKED:
+        case TYPES.START_GAME:
             newState = action.payload;    
             return {...state, newState};
 
-        case RESET_BUTTON_CLICKED:
+        case TYPES.RESET_GAME:
             newState = action.payload;
             return {...state, newState};
 
-        case NUMBER_BUTTON_CLICKED:
+        case TYPES.NUMBER_CLICK:
             newState = action.payload;
             return {...state, newState};
 
-        case START_COUNTDOWN:
+        case TYPES.START_COUNTDOWN:
+            newState = action.payload;
+            return {...state, newState};
+        
+        case TYPES.GAME_OVER:
             newState = action.payload;
             return {...state, newState};
 

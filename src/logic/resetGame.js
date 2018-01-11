@@ -1,20 +1,18 @@
+
 export default function resetGame(initialState){
-    let newState = initialState;
 
-    newState.startButtonDisabled = false;
-    newState.numberButtonDisabled = true;
-    newState.resetButtonDisabled = true
+    initialState.startButtonDisabled = false;
+    initialState.numberButtonDisabled = true;
+    initialState.resetButtonDisabled = true
+    initialState.challengeSize = 6;
+    initialState.initialChallengeRange = [30, 50];
+    initialState.initialSeconds = 120;
+    initialState.numbers = [0, 0, 0, 0, 0, 0];
+    initialState.targetNumber = 0;
+    initialState.timesToReachTarget = 0;
+    initialState.timesOfPlay = 0;
+    initialState.gameState = 'NOT_STARTED';
+    initialState.sumToReachTarget = 0;
 
-    newState.challengeSize = 6;
-    newState.initialChallengeRange = [30, 50];
-    newState.initialSeconds = 120;
-    newState.numbers = [0, 0, 0, 0, 0, 0];
-    newState.targetNumber = 0;
-    newState.timesToReachTarget = 0;
-    newState.timesOfPlay = 0;
-    newState.gameState = 'NOT_STARTED';
-    newState.sumToReachTarget = 0;
-
-    return newState;
-
+    return initialState;
 }
