@@ -21,7 +21,7 @@ export default function startGame(initialState, sumToReachTarget, timesOfPlay){
         let generalSum = 0;
         let tempNumbers = [];
         for (let i = 0; i < timesToReachTarget - 1; i++) {
-          let number = _.random(timesToReachTarget -i+1, parseInt(tempTargetNumber/timesToReachTarget-i));
+          let number = _.random(timesToReachTarget -i+1, parseInt(tempTargetNumber/timesToReachTarget-i, 10));
           generalSum += number;
           tempNumbers.push(number);
           tempTargetNumber = targetNumber - number;
