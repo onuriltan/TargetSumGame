@@ -11,12 +11,7 @@ import GameOver from '../logic/gameOver';
 
 class GameBoard extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.startCountDown = this.startCountDown.bind(this);
-
-  }
+ 
   render() {
     return (
       <div className="game">
