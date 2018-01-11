@@ -8,7 +8,7 @@ import {
 let initialState = {
     challengeSize: 6,
     initialChallengeRange: [30, 50],
-    initialSeconds: 60,
+    initialSeconds: 120,
     numbers: [0, 0, 0, 0, 0, 0],
     targetNumber: 0,
     timesToReachTarget: 0,
@@ -26,21 +26,17 @@ export default function game(state = initialState, action) {
     switch (action.type) {
         case START_BUTTON_CLICKED:
             newState = action.payload;    
-            console.log("START BUTTON CLICKED.")
             return {...state, newState};
 
         case RESET_BUTTON_CLICKED:
-            console.log("RESET BUTTON CLICKED.")
             newState = action.payload;
             return {...state, newState};
 
         case NUMBER_BUTTON_CLICKED:
-            console.log("NUMBER BUTTON CLICKED.")
             newState = action.payload;
             return {...state, newState};
 
         case START_COUNTDOWN:
-            console.log("START_COUNTDOWN STARTED.")
             newState = action.payload;
             return {...state, newState};
 

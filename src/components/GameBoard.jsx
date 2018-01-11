@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as gameActions from '../actions/gameActions';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-
 
 import StartGame from '../logic/startGame';
+import ResetGame from '../logic/resetGame';
 
 
 class GameBoard extends Component {
@@ -96,40 +95,7 @@ class GameBoard extends Component {
   }
 
   startGame() {
-    let newState;
-    newState = this.props.state.gameReducer;
-    newState.gameState = 'STARTED';
-    newState.startButtonDisabled = true;
-    newState.numberButtonDisabled = false;
-    newState.resetButtonDisabled = false;
-    newState.numbers = [];
-
-    let targetNumber = _.random(newState.initialChallengeRange[0], newState.initialChallengeRange[1]);
-    newState.targetNumber = targetNumber;
-    let timesToReachTarget = _.random(2, 5);
-    newState.timesToReachTarget = timesToReachTarget;
-
-    newState.timesOfPlay = 0;
-
-    let tempTargetNumber = targetNumber;
-    let generalSum = 0;
-    let tempNumbers = [];
-    for (let i = 0; i < timesToReachTarget - 1; i++) {
-      let number = _.random(timesToReachTarget -i+1, parseInt(tempTargetNumber/timesToReachTarget-i, 10));
-      generalSum += number;
-      tempNumbers.push(number);
-      tempTargetNumber = targetNumber - number;
-    }
-    let lastNumber = targetNumber - generalSum;
-    generalSum += lastNumber;
-    tempNumbers.push(lastNumber);
-
-    for (let j = 0; j < 6 - timesToReachTarget; j++) {
-      let number = _.random(0, tempTargetNumber);
-      tempNumbers.push(number);
-    }
- 
-    newState.numbers = tempNumbers;
+    let newState = this.props.gameActions.startGame(StartGame(this.props.state.gameReducer, 0, 0));
 
     this.startCountDown();
 
@@ -137,11 +103,32 @@ class GameBoard extends Component {
 
   }
 
+  shuffleNumbers(numbers) {
+
+    let ctr = numbers.length;
+    let temp;
+    let index;
+
+    // While there are elements in the array
+    while (ctr > 0) {
+      // Pick a random index
+      index = Math.floor(Math.random() * ctr);
+      // Decrease ctr by 1
+      ctr--;
+      // And swap the last element with it
+      temp = numbers[ctr];
+      numbers[ctr] = numbers[index];
+      numbers[index] = temp;
+    }
+    return numbers;
+
+  }
+
   startCountDown() {
     this.interval = setInterval(() => {
       let newState = this.props.state.gameReducer;
       newState.initialSeconds = newState.initialSeconds - 1
-      if(newState.initialSeconds === 0) {
+      if (newState.initialSeconds === 0) {
         this.gameOver();
       }
       return this.props.gameActions.startCountDown(newState);
@@ -152,13 +139,13 @@ class GameBoard extends Component {
     setTimeout(() => {
       clearInterval(this.interval);
       let newState = this.props.state.gameReducer;
-      newState.initialSeconds = 60;
+      newState.initialSeconds = 120;
       return this.props.gameActions.startCountDown(newState);
     }, 500);
   }
 
 
-  gameOver(){
+  gameOver() {
     let newState = this.props.state.gameReducer;
 
     newState.startButtonDisabled = false;
@@ -174,27 +161,11 @@ class GameBoard extends Component {
   }
 
   resetGame() {
-    let newState = this.props.state.gameReducer;
+    let newState = this.props.gameActions.resetGame(ResetGame(this.props.state.gameReducer));
 
-    newState.startButtonDisabled = false;
-    newState.numberButtonDisabled = true;
-    newState.resetButtonDisabled = true
-
-    newState.challengeSize = 6;
-    newState.initialChallengeRange = [30, 50];
-    newState.initialSeconds = 60;
-    newState.numbers = [0, 0, 0, 0, 0, 0];
-    newState.targetNumber = 0;
-    newState.timesToReachTarget = 0;
-    newState.timesOfPlay = 0;
-    newState.gameState = 'NOT_STARTED';
-    newState.sumToReachTarget = 0;
     this.stopCountDown();
-
     return newState;
-
   }
-
 }
 
 GameBoard.propTypes = {
