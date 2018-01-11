@@ -11,7 +11,7 @@ export default function startGame(initialState, sumToReachTarget, timesOfPlay) {
   initialState.timesOfPlay = timesOfPlay;
 
 
-  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay + 0, 2), initialState.initialChallengeRange[1] * (timesOfPlay + 0, 2));
+  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay + 0,2), initialState.initialChallengeRange[1] * (timesOfPlay + 0, 2));
   initialState.targetNumber = targetNumber;
   let timesToReachTarget = _.random(2, 5);
   initialState.timesToReachTarget = timesToReachTarget;

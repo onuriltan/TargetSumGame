@@ -134,6 +134,7 @@ class GameBoard extends Component {
     let newState = this.props.gameActions.resetGame(ResetGame(this.props.state.gameReducer));
 
     this.stopCountDown();
+
     return newState;
   }
 }

@@ -5,7 +5,7 @@ export default function resetGame(initialState){
     initialState.numberButtonDisabled = true;
     initialState.resetButtonDisabled = true
     initialState.challengeSize = 6;
-    initialState.initialChallengeRange = [30, 50];
+    initialState.initialChallengeRange = [20, 30];
     initialState.initialSeconds = 120;
     initialState.numbers = [0, 0, 0, 0, 0, 0];
     initialState.targetNumber = 0;
