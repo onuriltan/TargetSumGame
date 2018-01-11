@@ -115,7 +115,8 @@ class GameBoard extends Component {
     let generalSum = 0;
     let tempNumbers = [];
     for (let i = 0; i < timesToReachTarget - 1; i++) {
-      let number = _.random(i+1, parseInt(tempTargetNumber/i+1));
+      let number = _.random(timesToReachTarget -i+1, parseInt(tempTargetNumber/timesToReachTarget-i));
+      console.log(number);
       generalSum += number;
       tempNumbers.push(number);
       tempTargetNumber = targetNumber - number;
