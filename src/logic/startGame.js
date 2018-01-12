@@ -1,17 +1,15 @@
 import _ from 'lodash';
 
-export default function startGame(initialState, sumToReachTarget, timesOfPlay) {
+export default function startGame(initialState, timesOfPlay) {
   
   initialState.gameState = 'STARTED';
+  initialState.timesOfPlay = timesOfPlay;
+  initialState.initialSum = 0;
   initialState.startButtonDisabled = true;
   initialState.numberButtonDisabled = false;
   initialState.resetButtonDisabled = false;
-  initialState.numbers = [];
-  initialState.sumToReachTarget = sumToReachTarget;
-  initialState.timesOfPlay = timesOfPlay;
 
-
-  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay + 0,2), initialState.initialChallengeRange[1] * (timesOfPlay + 0, 2));
+  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay + 1), initialState.initialChallengeRange[1] * (timesOfPlay + 1));
   initialState.targetNumber = targetNumber;
   let timesToReachTarget = _.random(2, 5);
   initialState.timesToReachTarget = timesToReachTarget;
