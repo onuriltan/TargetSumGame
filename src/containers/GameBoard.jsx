@@ -11,88 +11,100 @@ import GameOver from '../logic/gameOver';
 
 class GameBoard extends Component {
 
- 
+  constructor(props) {
+    super(props);
+    this.state = {
+      initialState: this.props.state.gameReducer
+    };
+
+
+  }
+
   render() {
+
     return (
       <div className="game">
         <div className="help">
-          <div className="win-count">Win Count: {this.props.state.gameReducer.timesOfPlay}</div>
-          Pick numbers that sum to the target in {this.props.state.gameReducer.initialSeconds} seconds
+          <div className="win-count">Win Count: {this.state.initialState.timesOfPlay}</div>
+          Pick numbers that sum to the target in 120 seconds
         </div>
-        <div className="target">{this.props.state.gameReducer.targetNumber}</div>
+        <div className="target">{this.state.initialState.targetNumber}</div>
+        <div className="initial-sum">Initial sum : {this.state.initialState.initialSum}</div>
         <div className="challenge-numbers">
           <button
-            disabled={this.props.state.gameReducer.numberButtonDisabled}
+            disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.props.state.gameReducer.numbers[0])}>
-            {this.props.state.gameReducer.numbers[0]}
+            onClick={() => this.numberClick(this.state.initialState.numbers[0])}>
+            {this.state.initialState.numbers[0]}
           </button>
           <button
-            disabled={this.props.state.gameReducer.numberButtonDisabled}
+            disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.props.state.gameReducer.numbers[1])}>
-            {this.props.state.gameReducer.numbers[1]}
+            onClick={() => this.numberClick(this.state.initialState.numbers[1])}>
+            {this.state.initialState.numbers[1]}
           </button>
           <button
-            disabled={this.props.state.gameReducer.numberButtonDisabled}
+            disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.props.state.gameReducer.numbers[2])}>
-            {this.props.state.gameReducer.numbers[2]}
+            onClick={() => this.numberClick(this.state.initialState.numbers[2])}>
+            {this.state.initialState.numbers[2]}
           </button>
 
         </div>
 
         <div className="challenge-numbers">
           <button
-            disabled={this.props.state.gameReducer.numberButtonDisabled}
+            disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.props.state.gameReducer.numbers[3])}>
-            {this.props.state.gameReducer.numbers[3]}
+            onClick={() => this.numberClick(this.state.initialState.numbers[3])}>
+            {this.state.initialState.numbers[3]}
           </button>
           <button
-            disabled={this.props.state.gameReducer.numberButtonDisabled}
+            disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.props.state.gameReducer.numbers[4])}>
-            {this.props.state.gameReducer.numbers[4]}
+            onClick={() => this.numberClick(this.state.initialState.numbers[4])}>
+            {this.state.initialState.numbers[4]}
           </button>
           <button
-            disabled={this.props.state.gameReducer.numberButtonDisabled}
+            disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.props.state.gameReducer.numbers[5])}>
-            {this.props.state.gameReducer.numbers[5]}
+            onClick={() => this.numberClick(this.state.initialState.numbers[5])}>
+            {this.state.initialState.numbers[5]}
           </button>
 
         </div>
         <div className="footer">
-          <div className="timer-value">{this.props.state.gameReducer.initialSeconds}</div>
-          <button onClick={() => this.startGame()}
-            disabled={this.props.state.gameReducer.startButtonDisabled}>Start</button>
-          <button onClick={() => this.resetGame()}
-            disabled={this.props.state.gameReducer.resetButtonDisabled}>Reset</button>
+          <div className="timer-value">{this.state.initialState.initialSeconds}</div>
+          <button className="start" onClick={() => this.startGame()}
+            disabled={this.state.initialState.startButtonDisabled}>Start</button>
+          <button className="reset" onClick={() => this.resetGame()}
+            disabled={this.state.initialState.resetButtonDisabled}>Reset</button>
         </div>
 
       </div>
     );
   }
 
-
   numberClick(number) {
-    let newState = this.props.state.gameReducer;
-    newState.sumToReachTarget += number;
 
-    if (newState.targetNumber === newState.sumToReachTarget) {
-      return this.props.gameActions.startGame(StartGame(newState, 0, newState.timesOfPlay + 1));
+    let newState = this.state.initialState;
+    newState.initialSum += number;
+  
+
+    if (newState.targetNumber === newState.initialSum) {
+      return this.props.gameActions.startGame(StartGame(newState, newState.timesOfPlay + 1));
     }
 
-    if (newState.targetNumber < newState.sumToReachTarget) {
+    if (newState.targetNumber < newState.initialSum) {
       this.gameOver();
     }
-    console.log(newState.sumToReachTarget);
+    this.props.gameActions.numberClick(number);
+
     return newState;
   }
 
   startGame() {
-    let newState = this.props.gameActions.startGame(StartGame(this.props.state.gameReducer, 0, 0));
+    let newState = this.props.gameActions.startGame(StartGame(this.state.initialState, 0));
 
     this.startCountDown();
 
@@ -103,7 +115,7 @@ class GameBoard extends Component {
 
   startCountDown() {
     this.interval = setInterval(() => {
-      let newState = this.props.state.gameReducer;
+      let newState = this.state.initialState;
       newState.initialSeconds = newState.initialSeconds - 1
       if (newState.initialSeconds === 0) {
         this.gameOver();
@@ -115,7 +127,7 @@ class GameBoard extends Component {
   stopCountDown() {
     setTimeout(() => {
       clearInterval(this.interval);
-      let newState = this.props.state.gameReducer;
+      let newState = this.state.initialState;
       newState.initialSeconds = 120;
       return this.props.gameActions.startCountDown(newState);
     }, 500);
@@ -123,7 +135,7 @@ class GameBoard extends Component {
 
 
   gameOver() {
-    let newState = this.props.gameActions.gameOver(GameOver(this.props.state.gameReducer));
+    let newState = this.props.gameActions.gameOver(GameOver(this.state.initialState));
 
     this.stopCountDown();
 
@@ -131,7 +143,7 @@ class GameBoard extends Component {
   }
 
   resetGame() {
-    let newState = this.props.gameActions.resetGame(ResetGame(this.props.state.gameReducer));
+    let newState = this.props.gameActions.resetGame(ResetGame(this.state.initialState));
 
     this.stopCountDown();
 
