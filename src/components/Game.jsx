@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Game.css';
 
 import GameBoard from '../containers/GameBoard';
 

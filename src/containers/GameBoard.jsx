@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import * as gameActions from '../actions/gameActions';
 import PropTypes from 'prop-types';
 
+import './GameBoard.css';
+
 import StartGame from '../logic/startGame';
 import ResetGame from '../logic/resetGame';
 import GameOver from '../logic/gameOver';
