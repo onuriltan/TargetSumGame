@@ -1,4 +1,3 @@
-
 export default {
     challengeSize: 6,
     initialChallengeRange: [20, 30],
