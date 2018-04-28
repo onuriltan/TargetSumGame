@@ -3,6 +3,7 @@ export default {
     initialChallengeRange: [20, 30],
     initialSeconds: 120,
     numbers: [0, 0, 0, 0, 0, 0],
+    isButtonActive: [false, false, false, false, false, false],
     targetNumber: 0,
     timesToReachTarget: 0,
     timesOfPlay: 0,
