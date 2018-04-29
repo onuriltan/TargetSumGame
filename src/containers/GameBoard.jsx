@@ -8,9 +8,11 @@ import './GameBoard.css';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
+
 import StartGame from '../logic/startGame';
 import ResetGame from '../logic/resetGame';
 import GameOver from '../logic/gameOver';
+
 
 
 class GameBoard extends Component {
@@ -30,27 +32,30 @@ class GameBoard extends Component {
       <div className="gameboard">
         <div className="header">
           <div className="win-count">Win Count: {this.state.initialState.timesOfPlay}</div>
-          Pick numbers that sum to the target in 120 seconds
+          <div className="expalanation">Sum the numbers to react the target</div>
         </div>
         <div className="target">{this.state.initialState.targetNumber}</div>
         <div className="initial-sum">Initial sum : {this.state.initialState.initialSum}</div>
         <div className="challenge-numbers">
           <RaisedButton
+            backgroundColor={this.state.initialState.isButtonActive[0] ? 'red' : 'white'}
             disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.state.initialState.numbers[0])}>
+            onClick={() => this.numberClick(this.state.initialState.numbers[0], 0)}>
             {this.state.initialState.numbers[0]}
           </RaisedButton>
           <RaisedButton
+            backgroundColor={this.state.initialState.isButtonActive[1] ? 'red' : 'white'}
             disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.state.initialState.numbers[1])}>
+            onClick={() => this.numberClick(this.state.initialState.numbers[1], 1)}>
             {this.state.initialState.numbers[1]}
           </RaisedButton>
           <RaisedButton
+            backgroundColor={this.state.initialState.isButtonActive[2] ? 'red' : 'white'}
             disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.state.initialState.numbers[2])}>
+            onClick={() => this.numberClick(this.state.initialState.numbers[2], 2)}>
             {this.state.initialState.numbers[2]}
           </RaisedButton>
 
@@ -58,21 +63,24 @@ class GameBoard extends Component {
 
         <div className="challenge-numbers">
           <RaisedButton
+            backgroundColor={this.state.initialState.isButtonActive[3] ? 'red' : 'white'}
             disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.state.initialState.numbers[3])}>
+            onClick={() => this.numberClick(this.state.initialState.numbers[3], 3)}>
             {this.state.initialState.numbers[3]}
           </RaisedButton>
           <RaisedButton
+            backgroundColor={this.state.initialState.isButtonActive[4] ? 'red' : 'white'}
             disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.state.initialState.numbers[4])}>
+            onClick={() => this.numberClick(this.state.initialState.numbers[4], 4)}>
             {this.state.initialState.numbers[4]}
           </RaisedButton>
           <RaisedButton
+            backgroundColor={this.state.initialState.isButtonActive[5] ? 'red' : 'white'}
             disabled={this.state.initialState.numberButtonDisabled}
             className="number"
-            onClick={() => this.numberClick(this.state.initialState.numbers[5])}>
+            onClick={() => this.numberClick(this.state.initialState.numbers[5], 5)}>
             {this.state.initialState.numbers[5]}
           </RaisedButton>
 
@@ -89,11 +97,11 @@ class GameBoard extends Component {
     );
   }
 
-  numberClick(number) {
+  numberClick(number, index) {
 
     let newState = this.state.initialState;
     newState.initialSum += number;
-
+    newState.isButtonActive[index] = true;
 
     if (newState.targetNumber === newState.initialSum) {
       return this.props.gameActions.startGame(StartGame(newState, newState.timesOfPlay + 1));
