@@ -98,10 +98,17 @@ class GameBoard extends Component {
   }
 
   numberClick(number, index) {
-
     let newState = this.state.initialState;
-    newState.initialSum += number;
-    newState.isButtonActive[index] = true;
+
+    if(newState.isButtonActive[index] === false){
+      newState.initialSum = newState.initialSum + number;
+      newState.isButtonActive[index] = true;
+    }
+
+    else{
+      newState.initialSum = newState.initialSum - number;
+      newState.isButtonActive[index] = false;
+    }
 
     if (newState.targetNumber === newState.initialSum) {
       return this.props.gameActions.startGame(StartGame(newState, newState.timesOfPlay + 1));

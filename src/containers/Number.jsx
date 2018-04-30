@@ -19,7 +19,7 @@ class Number extends Component {
     </button>;
   }
 
-  numberClick(number) {
+  numberClick(number) {ßß
     let newState = this.props.state.gameReducer;
     newState.sumToReachTarget += number;
     if (newState.targetNumber === newState.sumToReachTarget) {
