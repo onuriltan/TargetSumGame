@@ -3,7 +3,8 @@ export default function resetGame(initialState){
 
     initialState.startButtonDisabled = false;
     initialState.numberButtonDisabled = true;
-    initialState.resetButtonDisabled = true
+    initialState.resetButtonDisabled = true;
+    initialState.passButtonDisabled = true;
     initialState.challengeSize = 6;
     initialState.initialChallengeRange = [20, 30];
     initialState.initialSeconds = 120;

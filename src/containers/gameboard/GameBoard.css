@@ -1,0 +1,105 @@
+.gameboard {
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  width: 100%;
+}
+
+.header {
+  margin: 2rem 5%; display: flex; width: 90%; justify-content: space-between; 
+}
+.explanation {
+  font-size: 1.5em; 
+
+}
+.target {
+  font-size: 5em; 
+  text-align: center; 
+  margin: 1rem 5%;
+
+}
+.challenge-numbers{
+  display: flex; 
+  justify-content: center;
+  width: 100%;
+
+
+
+}
+.number {
+  text-align: center;
+  font-size: 2em;
+  margin: 2%; 
+}
+
+.footer {
+  margin: 5rem 5%; display: flex; width: 90%; justify-content: space-between;  
+}
+
+.timer-value { 
+  color: darkgreen; 
+  font-size: 2rem; 
+  margin: 2%;
+}
+
+.win-count {
+  color: black; 
+  font-size: 1.5rem
+}
+
+.mainbuttons {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+
+}
+.startbutton {
+  margin-right: 2%;
+}
+
+.resetbutton {
+  margin-left: 2%;
+}
+
+.passbutton {
+  margin: 2%;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .mainbuttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .timer-value { 
+    font-size: 1.5rem; 
+  }
+
+  .win-count {
+    font-size: 1rem
+  }
+
+  .explanation {
+    font-size: 1em; 
+  }
+
+  .number {
+    font-size: 1em;
+  }
+
+  .startbutton {
+    font-size: 0.5em;
+  }
+
+  .resetbutton {
+    font-size: 0.5em;
+  }
+
+  .passbutton {
+    font-size: 0.5em;
+  }
+
+
+}
