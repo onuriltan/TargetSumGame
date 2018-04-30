@@ -23,13 +23,11 @@
   justify-content: center;
   width: 100%;
 
-
-
 }
 .number {
   text-align: center;
   font-size: 2em;
-  margin: 2%; 
+  margin: 1%; 
 }
 
 .footer {
