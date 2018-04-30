@@ -95,20 +95,20 @@ class GameBoard extends Component {
                             onClick={() => this.startGame()}
                             disabled={this.state.initialState.startButtonDisabled}>
                             START
-                        </RaisedButton>
+                            </RaisedButton>
                         <RaisedButton
                             className="resetbutton"
                             onClick={() => this.resetGame()}
                             disabled={this.state.initialState.resetButtonDisabled}>
                             RESET
-                        </RaisedButton>
+                            </RaisedButton>
                     </div>
                     <RaisedButton
                         className="passbutton"
                         disabled={this.state.initialState.passButtonDisabled}
                         onClick={() => this.passround()}>
                         Pass this round
-                    </RaisedButton>
+                        </RaisedButton>
                 </div>
 
             </div>

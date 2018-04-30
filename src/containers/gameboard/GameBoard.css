@@ -67,11 +67,7 @@
 
 @media only screen and (max-width: 768px) {
 
-  .mainbuttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
+
 
   .timer-value { 
     font-size: 1.5rem; 
