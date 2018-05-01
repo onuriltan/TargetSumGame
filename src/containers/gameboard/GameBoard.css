@@ -65,7 +65,9 @@
 
 @media only screen and (max-width: 768px) {
 
-
+  .target {
+    font-size: 3em; 
+  }
 
   .timer-value { 
     font-size: 1.5rem; 
