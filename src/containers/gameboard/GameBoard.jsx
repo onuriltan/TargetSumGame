@@ -168,12 +168,10 @@ class GameBoard extends Component {
     }
 
     stopCountDown() {
-        setTimeout(() => {
-            clearInterval(this.interval);
-            let newState = this.state.initialState;
-            newState.initialSeconds = 120;
-            return this.props.gameActions.startCountDown(newState);
-        }, 500);
+        clearInterval(this.interval);
+        let newState = this.state.initialState;
+        newState.initialSeconds = 120;
+        return this.props.gameActions.startCountDown(newState);
     }
 
 
