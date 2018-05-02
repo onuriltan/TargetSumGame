@@ -33,7 +33,7 @@ class GameBoard extends Component {
 
                 <div className="header">
                     <div className="win-count">Win Count: {this.state.initialState.timesOfPlay}</div>
-                    <div className="explanation">Sum the numbers to react the target</div>
+                    <div className="explanation">Sum the numbers to reach the target</div>
                 </div>
                 <div className="target">{this.state.initialState.targetNumber}</div>
                 <div className="initial-sum">Initial sum : {this.state.initialState.initialSum}</div>
