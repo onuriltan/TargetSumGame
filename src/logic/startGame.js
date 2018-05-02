@@ -8,13 +8,13 @@ export default function startGame(initialState, timesOfPlay) {
   initialState.startButtonDisabled = true;
   initialState.numberButtonDisabled = false;
   initialState.resetButtonDisabled = false;
-  if(timesOfPlay === 0){
+  if(timesOfPlay === 1){
     initialState.passButtonDisabled = false;
 
   }
   initialState.isButtonActive = [false, false, false, false, false, false];
 
-  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay + 1), initialState.initialChallengeRange[1] * (timesOfPlay + 1));
+  let targetNumber = _.random(initialState.initialChallengeRange[0] * (timesOfPlay), initialState.initialChallengeRange[1] * (timesOfPlay));
   initialState.targetNumber = targetNumber;
   let timesToReachTarget = _.random(2, 5);
   initialState.timesToReachTarget = timesToReachTarget;

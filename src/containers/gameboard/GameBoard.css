@@ -6,15 +6,24 @@
 }
 
 .header {
-  margin: 2rem 5%; display: flex; width: 90%; justify-content: space-between; 
+  margin: 2rem 2rem 1rem 2rem; 
+  display: block; 
+  width: 90%; 
+  text-align: center;
+  justify-content: space-between; 
 }
 .explanation {
-  font-size: 1.5em; 
+  font-size: 1.2em; 
+  margin-bottom: 2%; 
 
 }
 .target {
   font-size: 5em; 
   text-align: center; 
+  margin: 0rem 5%;
+
+}
+.initial-sum {
   margin: 1rem 5%;
 
 }
@@ -22,11 +31,12 @@
   display: flex; 
   justify-content: center;
   width: 100%;
+  font-size: 0.8em;
 
 }
 .number {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 1%; 
 }
 
@@ -38,11 +48,13 @@
   color: darkgreen; 
   font-size: 2rem; 
   margin: 2%;
+  text-align: center;
 }
 
 .win-count {
   color: black; 
-  font-size: 1.5rem
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .mainbuttons {
@@ -52,26 +64,22 @@
 
 }
 .startbutton {
+  font-size: 0.8em;
   margin-right: 2%;
 }
 
 .resetbutton {
+  font-size: 0.8em;
   margin-left: 2%;
 }
 
 .passbutton {
+  font-size: 0.8em;
   margin: 2%;
 }
 
 @media only screen and (max-width: 768px) {
 
-  .header {
-    margin: 2rem 5%; 
-    display: block; 
-    width: 90%; 
-    text-align: center;
-    justify-content: space-between; 
-  }
 
   .target {
     font-size: 3em; 
@@ -79,15 +87,17 @@
 
   .timer-value { 
     font-size: 1.5rem; 
+    padding-top:2%; 
   }
 
   .win-count {
     font-size: 1rem;
-    padding-bottom : 1rem;
   }
 
   .explanation {
     font-size: 1em; 
+    padding-bottom: 2%;
+    
   }
 
   .number {

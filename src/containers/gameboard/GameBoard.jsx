@@ -20,8 +20,7 @@ class GameBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialState: this.props.state.gameReducer,
-            challengeNumbersRowCount: [1, 2]
+            initialState: this.props.state.gameReducer
         };
 
     }
@@ -32,8 +31,9 @@ class GameBoard extends Component {
             <div className="gameboard">
 
                 <div className="header">
-                    <div className="win-count">Win Count: {this.state.initialState.timesOfPlay}</div>
+                  
                     <div className="explanation">Sum the numbers to reach the target</div>
+                    <div className="win-count">Stage {this.state.initialState.timesOfPlay}</div>
                 </div>
                 <div className="target">{this.state.initialState.targetNumber}</div>
                 <div className="initial-sum">Initial sum : {this.state.initialState.initialSum}</div>
@@ -107,7 +107,7 @@ class GameBoard extends Component {
                         className="passbutton"
                         disabled={this.state.initialState.passButtonDisabled}
                         onClick={() => this.passround()}>
-                        Pass this round
+                        Pass this stage
                         </RaisedButton>
                 </div>
 
@@ -148,7 +148,7 @@ class GameBoard extends Component {
     }
 
     startGame() {
-        let newState = this.props.gameActions.startGame(StartGame(this.state.initialState, 0));
+        let newState = this.props.gameActions.startGame(StartGame(this.state.initialState, 1));
 
         this.startCountDown();
 
@@ -169,12 +169,10 @@ class GameBoard extends Component {
     }
 
     stopCountDown() {
-        setTimeout(() => {
-            clearInterval(this.interval);
-            let newState = this.state.initialState;
-            newState.initialSeconds = 120;
-            return this.props.gameActions.startCountDown(newState);
-        }, 500);
+        clearInterval(this.interval);
+        let newState = this.state.initialState;
+        newState.initialSeconds = 120;
+        return this.props.gameActions.startCountDown(newState);
     }
 
 
