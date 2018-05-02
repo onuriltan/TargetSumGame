@@ -20,8 +20,7 @@ class GameBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialState: this.props.state.gameReducer,
-            challengeNumbersRowCount: [1, 2]
+            initialState: this.props.state.gameReducer
         };
 
     }
@@ -32,7 +31,7 @@ class GameBoard extends Component {
             <div className="gameboard">
 
                 <div className="header">
-                    <div className="win-count">Win Count: {this.state.initialState.timesOfPlay}</div>
+                    <div className="win-count">Stage {this.state.initialState.timesOfPlay}</div>
                     <div className="explanation">Sum the numbers to react the target</div>
                 </div>
                 <div className="target">{this.state.initialState.targetNumber}</div>
@@ -148,7 +147,7 @@ class GameBoard extends Component {
     }
 
     startGame() {
-        let newState = this.props.gameActions.startGame(StartGame(this.state.initialState, 0));
+        let newState = this.props.gameActions.startGame(StartGame(this.state.initialState, 1));
 
         this.startCountDown();
 

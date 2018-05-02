@@ -9,7 +9,7 @@
   margin: 2rem 5%; display: flex; width: 90%; justify-content: space-between; 
 }
 .explanation {
-  font-size: 1.5em; 
+  font-size: 1.2em; 
 
 }
 .target {
@@ -22,11 +22,12 @@
   display: flex; 
   justify-content: center;
   width: 100%;
+  font-size: 0.8em;
 
 }
 .number {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 1%; 
 }
 
@@ -38,11 +39,13 @@
   color: darkgreen; 
   font-size: 2rem; 
   margin: 2%;
+  text-align: center;
 }
 
 .win-count {
   color: black; 
-  font-size: 1.5rem
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .mainbuttons {
@@ -52,14 +55,17 @@
 
 }
 .startbutton {
+  font-size: 0.8em;
   margin-right: 2%;
 }
 
 .resetbutton {
+  font-size: 0.8em;
   margin-left: 2%;
 }
 
 .passbutton {
+  font-size: 0.8em;
   margin: 2%;
 }
 
@@ -79,6 +85,7 @@
 
   .timer-value { 
     font-size: 1.5rem; 
+    padding-top:2%; 
   }
 
   .win-count {
