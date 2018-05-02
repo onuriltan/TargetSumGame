@@ -106,7 +106,7 @@ class GameBoard extends Component {
                         className="passbutton"
                         disabled={this.state.initialState.passButtonDisabled}
                         onClick={() => this.passround()}>
-                        Pass this round
+                        Pass this stage
                         </RaisedButton>
                 </div>
 
