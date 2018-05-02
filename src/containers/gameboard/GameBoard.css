@@ -6,15 +6,24 @@
 }
 
 .header {
-  margin: 2rem 5%; display: flex; width: 90%; justify-content: space-between; 
+  margin: 2rem 2rem 1rem 2rem; 
+  display: block; 
+  width: 90%; 
+  text-align: center;
+  justify-content: space-between; 
 }
 .explanation {
   font-size: 1.2em; 
+  margin-bottom: 2%; 
 
 }
 .target {
   font-size: 5em; 
   text-align: center; 
+  margin: 0rem 5%;
+
+}
+.initial-sum {
   margin: 1rem 5%;
 
 }
@@ -71,13 +80,6 @@
 
 @media only screen and (max-width: 768px) {
 
-  .header {
-    margin: 2rem 5%; 
-    display: block; 
-    width: 90%; 
-    text-align: center;
-    justify-content: space-between; 
-  }
 
   .target {
     font-size: 3em; 
@@ -90,11 +92,12 @@
 
   .win-count {
     font-size: 1rem;
-    padding-bottom : 1rem;
   }
 
   .explanation {
     font-size: 1em; 
+    padding-bottom: 2%;
+    
   }
 
   .number {
