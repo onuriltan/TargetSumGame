@@ -2,6 +2,7 @@
   "name": "targetsum",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://onuriltan.com/targetsumgame/",
   "dependencies": {
     "immutability-helper": "^2.6.6",
     "lodash": "4.17.4",
