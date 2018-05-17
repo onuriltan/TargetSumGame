@@ -1,7 +1,8 @@
 {
-  "name": "targetsum",
+  "name": "targetsumgame",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:6000",
   "homepage": "http://onuriltan.com/targetsumgame/",
   "dependencies": {
     "autoprefixer": "7.1.6",
