@@ -13,5 +13,9 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/targetsumgame', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
+
 
 app.listen(4000, () => console.log("NodeJs server started at port 4000."));
