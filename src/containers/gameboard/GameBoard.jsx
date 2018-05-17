@@ -8,6 +8,8 @@ import './GameBoard.css';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { Animated } from "react-animated-css";
+
 
 import StartGame from '../../logic/startGame';
 import ResetGame from '../../logic/resetGame';
@@ -20,95 +22,110 @@ class GameBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialState: this.props.state.gameReducer
+            initialState: this.props.state.gameReducer,
+            winCount: 1,
+            winCountComponent: null
         };
 
     }
 
+  
+
+
+
+
     render() {
+
 
         return (
             <div className="gameboard">
-
                 <div className="header">
-                  
                     <div className="explanation">Sum the numbers to reach the target</div>
-                    <div className="win-count">Stage {this.state.initialState.timesOfPlay}</div>
+
+                    <Animated key={this.state.initialState.timesOfPlay} animationIn="rotateIn" animationOut="fadeOut" isVisible={true} >
+                        <div className="win-count">  Stage {this.state.initialState.timesOfPlay}  </div>
+                    </Animated>    
+
+
                 </div>
                 <div className="target">{this.state.initialState.targetNumber}</div>
                 <div className="initial-sum">Initial sum : {this.state.initialState.initialSum}</div>
                 <div className="challenge-numbers">
                     <RaisedButton
+                        label={this.state.initialState.numbers[0]}
                         backgroundColor={this.state.initialState.isButtonActive[0] ? 'red' : 'white'}
                         disabled={this.state.initialState.numberButtonDisabled}
                         className="number"
                         onClick={() => this.numberClick(this.state.initialState.numbers[0], 0)}>
-                        {this.state.initialState.numbers[0]}
                     </RaisedButton>
                     <RaisedButton
+                        label={this.state.initialState.numbers[1]}
                         backgroundColor={this.state.initialState.isButtonActive[1] ? 'red' : 'white'}
                         disabled={this.state.initialState.numberButtonDisabled}
                         className="number"
                         onClick={() => this.numberClick(this.state.initialState.numbers[1], 1)}>
-                        {this.state.initialState.numbers[1]}
                     </RaisedButton>
                     <RaisedButton
+                        label={this.state.initialState.numbers[2]}
                         backgroundColor={this.state.initialState.isButtonActive[2] ? 'red' : 'white'}
                         disabled={this.state.initialState.numberButtonDisabled}
                         className="number"
                         onClick={() => this.numberClick(this.state.initialState.numbers[2], 2)}>
-                        {this.state.initialState.numbers[2]}
                     </RaisedButton>
 
                 </div>
 
                 <div className="challenge-numbers">
                     <RaisedButton
+                        label={this.state.initialState.numbers[3]}
                         backgroundColor={this.state.initialState.isButtonActive[3] ? 'red' : 'white'}
                         disabled={this.state.initialState.numberButtonDisabled}
                         className="number"
                         onClick={() => this.numberClick(this.state.initialState.numbers[3], 3)}>
-                        {this.state.initialState.numbers[3]}
                     </RaisedButton>
                     <RaisedButton
+                        label={this.state.initialState.numbers[4]}
                         backgroundColor={this.state.initialState.isButtonActive[4] ? 'red' : 'white'}
                         disabled={this.state.initialState.numberButtonDisabled}
                         className="number"
                         onClick={() => this.numberClick(this.state.initialState.numbers[4], 4)}>
-                        {this.state.initialState.numbers[4]}
                     </RaisedButton>
                     <RaisedButton
+                        label={this.state.initialState.numbers[5]}
                         backgroundColor={this.state.initialState.isButtonActive[5] ? 'red' : 'white'}
                         disabled={this.state.initialState.numberButtonDisabled}
                         className="number"
                         onClick={() => this.numberClick(this.state.initialState.numbers[5], 5)}
                     >
-                        {this.state.initialState.numbers[5]}
+
                     </RaisedButton>
+                    
 
                 </div>
+                <div className="timer-value">{this.state.initialState.initialSeconds}</div>
+
                 <div className="footer">
-                    <div className="timer-value">{this.state.initialState.initialSeconds}</div>
                     <div className="mainbuttons">
                         <RaisedButton
+                            label="START"
                             className="startbutton"
                             onClick={() => this.startGame()}
                             disabled={this.state.initialState.startButtonDisabled}>
-                            START
-                            </RaisedButton>
+                        </RaisedButton>
                         <RaisedButton
+                            label="RESET"
                             className="resetbutton"
                             onClick={() => this.resetGame()}
                             disabled={this.state.initialState.resetButtonDisabled}>
-                            RESET
-                            </RaisedButton>
+                        </RaisedButton>
+
                     </div>
                     <RaisedButton
+                        label="Pass"
                         className="passbutton"
                         disabled={this.state.initialState.passButtonDisabled}
                         onClick={() => this.passround()}>
-                        Pass this stage
-                        </RaisedButton>
+                    </RaisedButton>
                 </div>
 
             </div>
@@ -136,6 +153,7 @@ class GameBoard extends Component {
         }
 
         if (newState.targetNumber === newState.initialSum) {
+
             return this.props.gameActions.startGame(StartGame(newState, newState.timesOfPlay + 1));
         }
 
