@@ -9,6 +9,7 @@ export default {
     timesOfPlay: 0,
     gameState: 'NOT_STARTED',
     initialSum: 0,
+    initialSumForLabel: 0,
     passButtonDisabled: true,
     startButtonDisabled: false,
     numberButtonDisabled: true,

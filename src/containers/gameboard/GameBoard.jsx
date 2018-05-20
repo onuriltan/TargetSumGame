@@ -31,28 +31,22 @@ class GameBoard extends Component {
     }
 
     remainingSecondsComponent(remainingCount, gameState) {
-        if (gameState === 'STARTED' ) {
+        if (gameState === 'STARTED') {
 
             if (remainingCount < 20 && remainingCount >= 10) {
-                return  <div className="timer-value" style={{color: 'red'}}>{remainingCount}</div>
+                return <div className="timer-value" style={{ color: 'red' }}>{remainingCount}</div>
             }
-            
+
             else if (remainingCount < 10 && remainingCount >= 0) {
-                return <Animated className="timer-value"  style={{color: 'red'}} key={remainingCount} animationIn="rubberBand" animationOut="fadeOut" isVisible={true} >
-                            {remainingCount}
-                        </Animated>;
+                return <Animated className="timer-value" style={{ color: 'red' }} key={remainingCount} animationIn="rubberBand" animationOut="fadeOut" isVisible={true} >
+                    {remainingCount}
+                </Animated>;
             }
             else {
                 return <div className="timer-value">{remainingCount}</div>;
             }
 
-            
-            
-
         }
-
-
-
 
     }
     stageComponent(timesOfPlay) {
@@ -61,6 +55,17 @@ class GameBoard extends Component {
                 Stage {timesOfPlay}
             </Animated>
         }
+    }
+
+    initialSumComponent(initialSum, targetNumber, gameState) {
+        if (gameState === 'LOST') {
+            return <div className="initial-sum">Initial sum : {initialSum}, Target number: {targetNumber} </div>
+
+        }else {
+            return <div className="initial-sum">Initial sum : {initialSum}</div>
+
+        }
+
     }
 
 
@@ -78,7 +83,12 @@ class GameBoard extends Component {
 
                 </div>
                 <div className="target">{this.state.initialState.targetNumber}</div>
-                <div className="initial-sum">Initial sum : {this.state.initialState.initialSum}</div>
+                {this.initialSumComponent(
+                    this.state.initialState.initialSum,
+                    this.state.initialState.targetNumberForLabel,
+                    this.state.initialState.gameState
+                )
+                }
                 <div className="challenge-numbers">
                     <RaisedButton
                         label={this.state.initialState.numbers[0]}

@@ -10,6 +10,7 @@ export default function resetGame(initialState){
     initialState.initialSeconds = 60;
     initialState.numbers = [0, 0, 0, 0, 0, 0];
     initialState.targetNumber = 0;
+    initialState.targetNumberForLabel = 0;
     initialState.timesToReachTarget = 0;
     initialState.timesOfPlay = 0;
     initialState.gameState = 'NOT_STARTED';
