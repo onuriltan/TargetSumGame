@@ -39,13 +39,12 @@
 .number {
   text-align: center;
   font-size: 14px;
-  margin: 1%; 
+  margin: 2%; 
 }
 
 
-
 .footer {
-  margin: 2%; 
+  margin: 3%; 
   display: flex; 
   justify-content: space-between;  
 
@@ -119,9 +118,14 @@
     font-size: 3em; 
   }
 
+  .number {
+    margin: 5% 3% 5% 3% ; 
+
+  }
+
   .timer-value { 
     font-size: 1.5rem; 
-    padding-top:2%; 
+    padding:5%; 
   }
 
   .win-count {
