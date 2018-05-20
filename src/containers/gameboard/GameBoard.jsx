@@ -38,7 +38,7 @@ class GameBoard extends Component {
             }
             
             else if (remainingCount < 10 && remainingCount >= 0) {
-                return <Animated className="timer-value"  style={{color: 'red'}} key={remainingCount} animationIn="tada" animationOut="fadeOut" isVisible={true} >
+                return <Animated className="timer-value"  style={{color: 'red'}} key={remainingCount} animationIn="rubberBand" animationOut="fadeOut" isVisible={true} >
                             {remainingCount}
                         </Animated>;
             }
