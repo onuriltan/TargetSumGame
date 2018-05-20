@@ -23,28 +23,57 @@ class GameBoard extends Component {
         super(props);
         this.state = {
             initialState: this.props.state.gameReducer,
-            winCount: 1,
-            winCountComponent: null
+            winCount: 1
+
         };
+
 
     }
 
-  
+    remainingSecondsComponent(remainingCount, gameState) {
+        if (gameState === 'STARTED' ) {
+
+            if (remainingCount < 20 && remainingCount >= 10) {
+                return  <div className="timer-value" style={{color: 'red'}}>{remainingCount}</div>
+            }
+            
+            else if (remainingCount < 10 && remainingCount >= 0) {
+                return <Animated className="timer-value"  style={{color: 'red'}} key={remainingCount} animationIn="tada" animationOut="fadeOut" isVisible={true} >
+                            {remainingCount}
+                        </Animated>;
+            }
+            else {
+                return <div className="timer-value">{remainingCount}</div>;
+            }
+
+            
+            
+
+        }
+
+
+
+
+    }
+    stageComponent(timesOfPlay) {
+        if (timesOfPlay >= 1) {
+            return <Animated className="win-count" key={timesOfPlay} animationIn="flip" animationOut="fadeOut" isVisible={true} >
+                Stage {timesOfPlay}
+            </Animated>
+        }
+    }
+
 
 
 
 
     render() {
-
-
         return (
             <div className="gameboard">
                 <div className="header">
                     <div className="explanation">Sum the numbers to reach the target</div>
 
-                    <Animated key={this.state.initialState.timesOfPlay} animationIn="rotateIn" animationOut="fadeOut" isVisible={true} >
-                        <div className="win-count">  Stage {this.state.initialState.timesOfPlay}  </div>
-                    </Animated>    
+                    {this.stageComponent(this.state.initialState.timesOfPlay)}
 
 
                 </div>
@@ -99,10 +128,12 @@ class GameBoard extends Component {
                     >
 
                     </RaisedButton>
-                    
+
 
                 </div>
-                <div className="timer-value">{this.state.initialState.initialSeconds}</div>
+
+                {this.remainingSecondsComponent(this.state.initialState.initialSeconds,
+                    this.state.initialState.gameState)}
 
                 <div className="footer">
                     <div className="mainbuttons">
@@ -189,7 +220,7 @@ class GameBoard extends Component {
     stopCountDown() {
         clearInterval(this.interval);
         let newState = this.state.initialState;
-        newState.initialSeconds = 120;
+        newState.initialSeconds = 60;
         return this.props.gameActions.startCountDown(newState);
     }
 

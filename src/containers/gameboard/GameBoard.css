@@ -3,10 +3,7 @@
   flex-direction: column;
   align-items: center; 
   width: 100%;
-  border-radius: 8px 8px 8px 8px;
-  -moz-border-radius: 8px 8px 8px 8px;
-  -webkit-border-radius: 8px 8px 8px 8px;
-  border: 1px solid #000000;
+
 
 }
 
@@ -63,7 +60,7 @@
 
 .win-count {
   color: black; 
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   font-weight: bold;
   -webkit-transition: 1s ease-in-out;
   -moz-transition: 1s ease-in-out;
@@ -128,7 +125,7 @@
   }
 
   .win-count {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .explanation {
