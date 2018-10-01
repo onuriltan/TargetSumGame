@@ -2,7 +2,7 @@
 Game for ReactJs Practise
 
 # Demo
-[You can check demo of the application from my heroku account](https://targetsumgame.herokuapp.com/)
+[You can check demo of the application](https://onuriltan.com/targetsumgame)
 
 # How To Play?
 Reach the target number summming the numbers 
