@@ -1,5 +1,5 @@
 # TargetSumGame
-Game for ReactJs Practise
+Game for Mathematics Practise
 
 # Demo
 [You can check demo of the application](https://onuriltan.com/targetsumgame)
