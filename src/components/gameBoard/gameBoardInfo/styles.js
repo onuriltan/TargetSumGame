@@ -1,15 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  main: {
-    paddingTop: 100,
+  info: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
     flexDirection: 'column'
   },
-  paper: {
-    padding: theme.spacing(5)
+  title: {
+    fontSize: '25px',
+    textAlign: 'center',
+    marginBottom: '50px',
+    fontWeight: 'bold'
   }
 }));
 

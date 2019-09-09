@@ -1,16 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  main: {
-    paddingTop: 100,
+  buttons: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    paddingTop: 20
   },
-  paper: {
-    padding: theme.spacing(5)
-  }
+  button: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  rightIcon: {
+    marginLeft: theme.spacing(0.2),
+  },
 }));
 
 export default useStyles
